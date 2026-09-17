@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Коло — мастермайнд власників стоматологічних клінік</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --graphite-900: #2A2825;
+    --graphite-800: #363330;
+    --paper: #FFFFFF;
+    --paper-soft: #F5F3EF;
+    --yellow: #F4C430;
+    --yellow-deep: #D9A916;
+    --grey-700: #565248;
+    --grey-500: #837D6F;
+    --grey-300: #B9B2A2;
+    --grey-150: #E7E3D9;
+    --text-on-dark: #FBF9F5;
+    --text-on-dark-soft: #C9C3B5;
+    --text-on-light: #262420;
+    --text-on-light-soft: #5C5749;
+    --line-on-dark: rgba(251,249,245,0.14);
+    --line-on-light: rgba(38,36,32,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--text-on-light);
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
+  h1, h2, h3 { font-family: 'PT Serif', serif; font-weight: 700; letter-spacing: -0.01em; }
+  a { color: inherit; }
+
+  /* ---------- BRANDMARK (kept) ---------- */
+  .brandmark { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 44px; }
+  .ring { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--yellow-deep); flex-shrink: 0; }
+  .brand-word {
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    color: var(--text-on-light);
+  }
+  .on-dark .brand-word { color: var(--text-on-dark); }
+  .on-dark .ring { border-color: var(--yellow); }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 72px 0 76px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -210px; right: -190px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    border: 1px solid var(--grey-150);
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.4vw, 44px);
+    line-height: 1.24;
+    color: var(--text-on-light);
+    max-width: 700px;
+  }
+  .hero-lede {
+    margin-top: 22px;
+    font-size: 18.5px;
+    color: var(--text-on-light-soft);
+    max-width: 600px;
+  }
+
+  .hero-facts { display: flex; gap: 44px; margin-top: 48px; flex-wrap: wrap; }
+  .fact-num { font-family: 'PT Serif', serif; font-size: 30px; color: var(--yellow-deep); }
+  .fact-num .currency { font-size: 0.5em; margin-left: 6px; }
+  .fact-label { font-size: 14px; color: var(--text-on-light-soft); margin-top: 4px; max-width: 190px; }
+
+  .cta-row { margin-top: 44px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--text-on-light);
+    padding: 16px 30px;
+    border-radius: 3px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid var(--yellow-deep);
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .btn:hover { background: var(--yellow-deep); transform: translateY(-1px); }
+  .cta-note { color: var(--text-on-light-soft); font-size: 14.5px; }
+  .on-dark .cta-note { color: var(--text-on-dark-soft); }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 68px 0; }
+  .on-light { background: var(--paper-soft); border-bottom: 1px solid var(--line-on-light); }
+  .on-white { background: var(--paper); border-bottom: 1px solid var(--line-on-light); }
+  .on-dark { background: var(--graphite-900); border-bottom: 1px solid var(--line-on-dark); }
+
+  .eyebrow-mark { width: 34px; height: 2px; background: var(--yellow-deep); margin-bottom: 22px; }
+  .on-dark .eyebrow-mark { background: var(--yellow); }
+
+  h2 { font-size: clamp(24px, 2.8vw, 30px); line-height: 1.22; color: var(--text-on-light); max-width: 620px; }
+  .on-dark h2 { color: var(--text-on-dark); }
+
+  .lede { font-size: 17px; margin-top: 14px; max-width: 580px; color: var(--text-on-light-soft); }
+  .on-dark .lede { color: var(--text-on-dark-soft); }
+
+  p.body-text { margin-top: 16px; font-size: 16.5px; max-width: 600px; color: var(--text-on-light-soft); }
+
+  /* ---------- FORMAT LIST ---------- */
+  .format-list { margin-top: 36px; display: flex; flex-direction: column; }
+  .format-item {
+    display: grid; grid-template-columns: 170px 1fr; gap: 32px;
+    padding: 26px 0; border-top: 1px solid var(--line-on-light);
+  }
+  .format-item:last-child { border-bottom: 1px solid var(--line-on-light); }
+  .format-item h3 { font-size: 19px; color: var(--text-on-light); }
+  .format-item p { color: var(--text-on-light-soft); font-size: 16px; max-width: 540px; }
+
+  .expect-note {
+    margin-top: 30px;
+    font-size: 16px;
+    color: var(--text-on-light-soft);
+    max-width: 620px;
+    padding-left: 20px;
+    border-left: 2px solid var(--yellow-deep);
+  }
+
+  /* ---------- PRINCIPLES ---------- */
+  .principle { border-top: 1px solid var(--line-on-dark); padding: 32px 0; }
+  .principle:last-child { border-bottom: 1px solid var(--line-on-dark); }
+  .principle h3 { font-size: 20px; color: var(--yellow); }
+  .principle p { margin-top: 10px; color: var(--text-on-dark-soft); font-size: 16.5px; max-width: 580px; }
+
+  /* ---------- CLOSING ---------- */
+  .closing { padding: 80px 0 88px; }
+  .closing h2 { font-size: clamp(26px, 3.4vw, 36px); max-width: 640px; }
+  .closing .lede { margin-top: 16px; }
+
+  footer {
+    padding: 30px 0 42px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    color: var(--text-on-light-soft); font-size: 13.5px;
+  }
+
+  @media (max-width: 760px) {
+    .format-item { grid-template-columns: 1fr; gap: 8px; }
+    .hero { padding: 52px 0 44px; }
+    section { padding: 48px 0; }
+    .hero-facts { gap: 26px; }
+    .brandmark { margin-bottom: 32px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--yellow-deep); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO (kept text) -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="brandmark"><span class="ring"></span><span class="brand-word">Коло</span></div>
+
+      <h1>Ви не самі: коло власників клінік, які по-справжньому розуміють одне одного</h1>
+      <p class="hero-lede">Невеликі мастермайнд-вечері власників стоматологічних клінік з усієї України. Ми сідаємо за один стіл, ділимось реальними кейсами й підказуємо одне одному рішення.</p>
+
+      <div class="hero-facts">
+        <div>
+          <div class="fact-num">12–13</div>
+          <div class="fact-label">людей у групі — щоб залишалась довіра</div>
+        </div>
+        <div>
+          <div class="fact-num">3–4</div>
+          <div class="fact-label">години разом за вечерею</div>
+        </div>
+        <div>
+          <div class="fact-num">0<span class="currency">₴</span></div>
+          <div class="fact-label">вступних внесків — усе тримається на дружбі, а не на комерції</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSede2C6mOeY5U6G7FOkXpd9e3ObqGTR7H231lnV-3us0rHkUw/viewform?usp=publish-editor" target="_blank" rel="noopener">Приєднатись до кола</a>
+        <span class="cta-note">Місця в групі обмежені — саме тому вона камерна</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY PHILOSOPHY (new) -->
+  <section class="on-light">
+    <div class="wrap">
+      <div class="eyebrow-mark"></div>
+      <h2>Дружні зустрічі, а не бізнес-конференція</h2>
+      <p class="body-text">Коло збирається у різних містах України — невеликими групами по 12–13 людей, щоб атмосфера залишалась камерною й довірливою. Тут немає продажів, доповідей чи спонсорів. Тільки ті, хто готовий розвиватися сам, розвивати свою клініку — і щиро допомагати рости колегам.</p>
+      <p class="body-text">Ми не відчуваємо тут конкуренції. Відчуваємо партнерство й спільну справу.</p>
+    </div>
+  </section>
+
+  <!-- FORMAT (new, restored) -->
+  <section class="on-white">
+    <div class="wrap">
+      <div class="eyebrow-mark"></div>
+      <h2>Що відбувається на зустрічі</h2>
+      <p class="lede">Вечеря — щоб було невимушено. Mastermind — щоб було цінно.</p>
+
+      <div class="format-list">
+        <div class="format-item">
+          <h3>Вечеря</h3>
+          <p>Смачно вечеряємо в обраному ресторані — без слайдів, без протоколу, у форматі живої розмови.</p>
+        </div>
+        <div class="format-item">
+          <h3>Mastermind</h3>
+          <p>Формат, де учасники обмінюються реальним досвідом, ідеями та рішеннями. На кожній зустрічі ми розбираємо кілька реальних кейсів когось із учасників — і разом шукаємо рішення для його бізнес-задачі.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE VALUE + EXPECTATIONS (new lead-in, kept expectations text) -->
+  <section class="on-light">
+    <div class="wrap">
+      <div class="eyebrow-mark"></div>
+      <h2>Чому це працює, навіть коли кейс — не ваш</h2>
+      <p class="body-text">На кейсі колеги ми вчимося бачити інші способи мислення й рішення — ті, що потім можна накласти на власні ситуації та задачі. Це геть інший формат зростання, ніж будь-яка лекція.</p>
+
+      <p class="expect-note">Від кожного учасника ми чекаємо відкритості, готовності ділитися власним досвідом і щирої участі в обговоренні чужих кейсів — тільки так мастермайнд працює по-справжньому.</p>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES (kept text) -->
+  <section class="on-dark">
+    <div class="wrap">
+      <div class="eyebrow-mark"></div>
+      <h2>Два правила, на яких усе тримається</h2>
+
+      <div class="principle">
+        <h3>Конфіденційність</h3>
+        <p>Усе особисте, що звучить на зустрічі, залишається всередині групи і не виноситься за її межі.</p>
+      </div>
+      <div class="principle">
+        <h3>Повага без осуду</h3>
+        <p>Жодної токсичності. Кожен рухається своїм темпом і зі своїми ресурсами — і це нормально. Спілкуємось заради спільного зростання, а не змагання.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING (kept text) -->
+  <section class="closing on-white" id="join">
+    <div class="wrap">
+      <div class="eyebrow-mark"></div>
+      <h2>Якщо ви впізнали себе в цьому колі — будемо раді бачити вас за столом</h2>
+      <p class="lede">Напишіть кілька слів про клініку та місто — і ми зв'яжемося, щойно формується найближча камерна група.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSede2C6mOeY5U6G7FOkXpd9e3ObqGTR7H231lnV-3us0rHkUw/viewform?usp=publish-editor" target="_blank" rel="noopener">Залишити заявку</a>
+        <span class="cta-note">Заповнення займає менше двох хвилин</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:16px;">
+      <span>Коло — спільнота власників стоматологічних клінік України</span>
+      <span>Дружня ініціатива, не комерційний проєкт</span>
+    </div>
+  </footer>
+
+</body>
+</html>
